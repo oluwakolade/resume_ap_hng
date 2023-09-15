@@ -1,12 +1,6 @@
 import 'package:cv_app/edit_screen.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-    CvScreen(),
-  );
-}
-
 //ignore: must_be_immutable
 class CvScreen extends StatelessWidget {
   String? userName;
@@ -34,8 +28,7 @@ class CvScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void editCv() {
-      Navigator.push(
-        context,
+      Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => EditingScreen(
             userName: userInfo[0],
