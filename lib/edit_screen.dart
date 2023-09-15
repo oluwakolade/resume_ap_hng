@@ -3,31 +3,29 @@ import 'package:flutter/material.dart';
 
 //ignore: must_be_immutable
 class EditingScreen extends StatefulWidget {
-  EditingScreen(
+  final String userName;
+  final String userRole;
+  final String userLocation;
+  final String userBio;
+  final String userSkills;
+
+  const EditingScreen(
       {super.key,
       required this.userBio,
       required this.userLocation,
       required this.userName,
       required this.userRole,
       required this.userSkills});
-
-  String userName;
-  String userRole;
-  String userLocation;
-  String userBio;
-  String userSkills;
-
   @override
   State<EditingScreen> createState() => _EditingScreenState();
 }
 
 class _EditingScreenState extends State<EditingScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _roleController = TextEditingController();
-  final _locationController = TextEditingController();
-  final _bioController = TextEditingController();
-  final _skillsController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _roleController = TextEditingController();
+  TextEditingController _locationController = TextEditingController();
+  TextEditingController _bioController = TextEditingController();
+  TextEditingController _skillsController = TextEditingController();
 
   @override
   void initState() {
@@ -39,8 +37,8 @@ class _EditingScreenState extends State<EditingScreen> {
     _skillsController.text = widget.userSkills;
   }
 
-  @override
-  void dispose() {
+  // @override
+  void disposeState() {
     _bioController.dispose();
     _nameController.dispose();
     _locationController.dispose();
@@ -68,9 +66,8 @@ class _EditingScreenState extends State<EditingScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(24),
         child: Form(
-          key: _formKey,
           child: Column(
             children: [
               TextFormField(
